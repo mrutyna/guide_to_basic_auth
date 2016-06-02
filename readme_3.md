@@ -38,4 +38,5 @@ This will now build the session_controller, and I will make references to the co
             end
           end
 
-6. dsfdsfdsf
+6. Git Commit 10- SessionsController Complete
+        GIT COMMIT 10- Session Controller Complete
