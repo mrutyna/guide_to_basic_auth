@@ -65,4 +65,39 @@ Marked at UT #1 - to indicate which number in the useful things file can help yo
 
 10. Speaking of corresponding model level validation- Add that. Function wise, Validates is for the built in validation, while validate is to trigger your own custom validation method.
 
-11. Numbe 11
+11. In the User model, add the simple validations that correspond to the database constraints
+        validates :username, :session_token, presence: true, uniqueness: true #11
+        validates :password_digest, presence: true #11
+
+12. Because users might not know what a password digest, add the message "password cant be blank instead.
+        validates :password_digest, presence: { message: "Password can't be blank" } #11, #12
+
+13. Add User#password= and User#is_password? so that the user can save a password, as well as confirm if the password they provide hashes to the digest we have on file.
+NB: you are using self.password_diget because you want to avoid using an instance variable such as @password_diget
+        def password=(password)
+          self.password_digest = BCrypt::Password.create(password)
+        end #13
+
+        def is_password?(password)
+          BCrypt::Password.new(self.password_digest).is_password?(password)
+        end #13
+
+14. BUT we do wnat to test length of password, so we can have @password as an instance variable during the #password= method, which we can reach with a attr_reader, and then add model level validation for it, while allowing nil for it if it is not set. This step involves doing 3 things. Setting instance variable @password, during the password set method, adding a reader so it is accessible to the model even if not in the database, and the adding that validation that tests minimum length while still allowing nil when the password isnt being set.
+        class User < ActiveRecord::Base
+          attr_reader :password #14
+
+          validates :username, :session_token, presence: true, uniqueness: true #11
+          validates :password_digest, presence: { message: "Password can't be blank" } #11, #12
+          validates :password, length: { minimum: 6, allow_nil: true } #14
+
+          def password=(password) #13
+            @password = password #14
+            self.password_digest = BCrypt::Password.create(password)
+          end #13
+
+          def is_password?(password) #13
+            BCrypt::Password.new(self.password_digest).is_password?(password)
+          end #13
+        end
+
+15. Things
