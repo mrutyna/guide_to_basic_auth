@@ -13,6 +13,8 @@ Example - Index added during Step 7 is commented as #7
 Finally, there will be a correseponding useful_things.md that will have more information-
 Marked at UT #1 - to indicate which number in the useful things file can help you.
 
+### Initial Setup and User Migration and Model
+
 1. Start a new rails project but have the PSQL DB so
         rails new MusicApp -d postgresql
 
@@ -130,7 +132,7 @@ NB: you are using self.password_diget because you want to avoid using an instanc
 
 21. Totally Forgot, to add to the top to run the ensure session token logic.
 
-          after_initialize :ensure_session_token
+          after_initialize :ensure_session_token #21
 
 22. Git Commit 5- Actuall All Session Token logic
             GIT COMMIT 5: "Session Token Logic: Forgot to ensure session token after initialize"
@@ -142,7 +144,50 @@ NB: you are using self.password_diget because you want to avoid using an instanc
             user.is_password?(password) ? user : nil
           end
 
-24. dasd
-25. fsdfsd
-26. fsdfds
-27. dsfdsf
+24. Git Commit 6- User Model complete for now, added Find by Credentials.
+            GIT COMMIT 6: Completed User Model, added find by credentials
+
+25. Save Space Here Perhaps for Entire User File. Bask in your completed User Model.
+          class User < ActiveRecord::Base
+            attr_reader :password #14
+
+            after_initialize :ensure_session_token #21
+
+            validates :username, :session_token, presence: true, uniqueness: true #11
+            validates :password_digest, presence: { message: "Password can't be blank" } #11, #12
+            validates :password, length: { minimum: 6, allow_nil: true } #14
+
+            def password=(password) #13
+              @password = password #14 setting it during the password_setting to test validation
+              self.password_digest = BCrypt::Password.create(password)
+            end #13
+
+            def is_password?(password) #13
+              BCrypt::Password.new(self.password_digest).is_password?(password)
+            end #13
+
+            def self.find_by_credentials(username, password) #23
+             user = User.find_by_username(username)
+             return nil if user.nil?
+             user.is_password?(password) ? user : nil
+           end
+
+            def self.generate_session_token #17
+              SecureRandom::urlsafe_base64(16)
+            end
+
+            def reset_session_token! #18
+              self.session_token = self.class.generate_session_token
+              self.save!
+              self.session_token
+            end
+
+            private
+
+            def ensure_session_token #19
+              self.session_token ||= self.class.generate_session_token
+            end
+          end
+
+26. Final Git Commit in USer MDOel, added Finished Usermodel to read me
+        GIT COMMIT 7: "Final User Model Added to readme"  
