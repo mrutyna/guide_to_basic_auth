@@ -34,7 +34,7 @@ This will now build the session_controller, and I will make references to the co
               render :new
             else
               login_user!(user)
-              redirect_to cats_url
+              redirect_to root_url
             end
           end
 
