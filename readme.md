@@ -100,4 +100,32 @@ NB: you are using self.password_diget because you want to avoid using an instanc
           end #13
         end
 
-15. Things
+15. Commit User Model with password_setting and checking abilities
+          GIT COMMIT 3: "User Model: Setting and checking Passwords"    
+
+16. Next Section, setting up session_token logic in the User Model, User::generate_session_token, User#reset_session_token! and User#ensure_session_token.
+
+17. Generate session token as a class method because it dries out the places where a session token is generated, and we can always make it longer or change its parameters without hunting down all the places we generated it.
+          def self.generate_session_token #17
+            SecureRandom::urlsafe_base64(16)
+          end
+
+18. Reset_session token
+          def reset_session_token! #18
+            self.session_token = self.class.generate_session_token
+            self.save!
+            self.session_token
+          end
+
+19. Ensure Session Token- Provide one if not given
+
+          private
+
+        def ensure_session_token #19
+          self.session_token ||= self.class.generate_session_token
+        end
+
+20. Git Commit 4- All Session Token logic
+            GIT COMMIT 4: "Session Token Logic"   
+21. dasdasdasd
+22. sdfdsf
