@@ -1,7 +1,5 @@
 ### Session Controller
 
-This will now build the session_controller, and I will make references to the corresponding helper_methods in Application controller by denoting AC #3
-
 1. Generate a Sessions Controller
           rails generate controller Sessions
 2. Sessions are a singular resource so in the routes table, as opposed to resources, you would add them as a 'resource' singular, and you only need new, create, and destroy, where new generates the form to log in, create, creates the actual session in sending back the form data, and destroy coresponds to a user logging out.
