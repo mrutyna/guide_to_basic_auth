@@ -77,4 +77,15 @@
           end
 
 9. Git Commit 8 - Finished ApplicationController
-          GIT COMMIT 8: Finished ApplicationController- current_user, logged_in, login_user, logout_user, require_user!
+          GIT COMMIT 8: Finished ApplicationController- current_user, logged_in, login_user, logout_user, require_user
+
+10. Decided I needed require no user which will redirect to the main page if you are trying to access the log in page but are alreaady logged in (NB: (note that I have it set as a redirect to root_url so its as generic as possible. ))
+
+          def require_no_user! #10
+            redirect_to root_url if current_user
+          end
+
+11. Git Commit 9 -Added require_no_user to new_session_page.
+          GIT COMMIT 9 - "require_no_user is last pair for ApplicationController"
+
+12. Thus it may help to think of application controller as 3 pairs.
