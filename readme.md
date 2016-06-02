@@ -133,4 +133,16 @@ NB: you are using self.password_diget because you want to avoid using an instanc
           after_initialize :ensure_session_token
 
 22. Git Commit 5- Actuall All Session Token logic
-            GIT COMMIT 4: "Session Token Logic: Forgot to ensure session token after initialize" 
+            GIT COMMIT 5: "Session Token Logic: Forgot to ensure session token after initialize"
+
+23. Add Find by Credentials Logic
+          def self.find_by_credentials(username, password) #23
+            user = User.find_by_username(username)
+            return nil if user.nil?
+            user.is_password?(password) ? user : nil
+          end
+
+24. dasd
+25. fsdfsd
+26. fsdfds
+27. dsfdsf

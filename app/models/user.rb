@@ -18,6 +18,12 @@ class User < ActiveRecord::Base
     BCrypt::Password.new(self.password_digest).is_password?(password)
   end #13
 
+  def self.find_by_credentials(username, password) #23
+   user = User.find_by_username(username)
+   return nil if user.nil?
+   user.is_password?(password) ? user : nil
+ end
+
   def self.generate_session_token #17
     SecureRandom::urlsafe_base64(16)
   end
