@@ -95,7 +95,9 @@ NB: you are using self.password_diget because you want to avoid using an instanc
           BCrypt::Password.new(self.password_digest).is_password?(password)
         end #13
 ```
+
 14. BUT we do wnat to test length of password, so we can have @password as an instance variable during the #password= method, which we can reach with a attr_reader, and then add model level validation for it, while allowing nil for it if it is not set. This step involves doing 3 things. Setting instance variable @password, during the password set method, adding a reader so it is accessible to the model even if not in the database, and the adding that validation that tests minimum length while still allowing nil when the password isnt being set.
+
 ```
         class User < ActiveRecord::Base
           attr_reader :password #14
@@ -114,18 +116,22 @@ NB: you are using self.password_diget because you want to avoid using an instanc
           end #13
         end
 ```
+
 15. Commit User Model with password_setting and checking abilities
           GIT COMMIT 3: "User Model: Setting and checking Passwords"    
 
 16. Next Section, setting up session_token logic in the User Model, User::generate_session_token, User#reset_session_token! and User#ensure_session_token.
 
 17. Generate session token as a class method because it dries out the places where a session token is generated, and we can always make it longer or change its parameters without hunting down all the places we generated it.
+
 ```
           def self.generate_session_token #17
             SecureRandom::urlsafe_base64(16)
           end
 ```
+
 18. Reset_session token
+
 ```
           def reset_session_token! #18
             self.session_token = self.class.generate_session_token
@@ -133,7 +139,9 @@ NB: you are using self.password_diget because you want to avoid using an instanc
             self.session_token
           end
 ```
+
 19. Ensure Session Token- Provide one if not given
+
 ```
           private
 
@@ -141,19 +149,26 @@ NB: you are using self.password_diget because you want to avoid using an instanc
           self.session_token ||= self.class.generate_session_token
         end
 ```
+
 20. Git Commit 4- All Session Token logic
+
 ```
             GIT COMMIT 4: "Session Token Logic"   
 ```
+
 21. Totally Forgot, to add to the top to run the ensure session token logic.
+
 ```
           after_initialize :ensure_session_token #21
 ```
+
 22. Git Commit 5- Actuall All Session Token logic
 ```
+
             GIT COMMIT 5: "Session Token Logic: Forgot to ensure session token after initialize"
 ```
 23. Add Find by Credentials Logic
+
 ```
           def self.find_by_credentials(username, password) #23
             user = User.find_by_username(username)
@@ -161,11 +176,15 @@ NB: you are using self.password_diget because you want to avoid using an instanc
             user.is_password?(password) ? user : nil
           end
 ```
+
 24. Git Commit 6- User Model complete for now, added Find by Credentials.
+
 ```
             GIT COMMIT 6: Completed User Model, added find by credentials
 ```
+
 25. Save Space Here Perhaps for Entire User File. Bask in your completed User Model.
+
 ```
           class User < ActiveRecord::Base
             attr_reader :password #14
@@ -208,7 +227,9 @@ NB: you are using self.password_diget because you want to avoid using an instanc
             end
           end
 ```
+
 26. Final Git Commit in USer MDOel, added Finished Usermodel to read me
+
 ```
         GIT COMMIT 7: "Final User Model Added to readme"  
 ```
