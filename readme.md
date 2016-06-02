@@ -127,5 +127,10 @@ NB: you are using self.password_diget because you want to avoid using an instanc
 
 20. Git Commit 4- All Session Token logic
             GIT COMMIT 4: "Session Token Logic"   
-21. dasdasdasd
-22. sdfdsf
+
+21. Totally Forgot, to add to the top to run the ensure session token logic.
+
+          after_initialize :ensure_session_token
+
+22. Git Commit 5- Actuall All Session Token logic
+            GIT COMMIT 4: "Session Token Logic: Forgot to ensure session token after initialize" 
