@@ -5,7 +5,7 @@ unlike the HW or videos. there will be no bad code, or 'naive' way of doing thin
 
 NB: Code will be annotated with comments corresponding to the steps that helped create it.
 
-Example - Index added during Step 7 is commented as #7
+Example - Index added during Step 7 is commented as #7, meaning if you dont know where a line of code came from, just look at the nearby commented number and it will tell you what step wrote it. 
 
 ```ruby
     add_index :users, :session_token, unique: true #7
