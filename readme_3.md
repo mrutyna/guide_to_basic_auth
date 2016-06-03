@@ -83,3 +83,6 @@
 ```
         GIT COMMIT 11- Added how session controller should look like in the end.
 ```
+
+9 - before_action :require_no_user!, only: [:create, :new]
+- Will prevent a user who is already signed in from seeing the sign in screen and signing in again. 

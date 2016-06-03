@@ -24,15 +24,7 @@ app/views/shared/_errors.rb
 <% end %>
 ```
 
--4. This step not Yet implemeneted... Skip to 4
-
-Since log in and new user have extremely similar pages. We can combine them into one general sign on form for both. NB: note that the new_user form requires a value of @user.password, and @user.username for the value= field in the input type. This allows the text to show a field that has already been entered if you get returned to a form due to some kind of error; however, since this would just evaluate to nil during sign on, it shouldnt be an issue.
-
-This is an easy merge since both are post requests; one goes to session_url creating a new session(thus signing in), the other goes to users_url, creating a new user.
-
-NB: Didnt actually do this yet- so here are the two seperate forms, though you can probably see they are combine-able.
-
--5 Sign in page at session views - new.html.erb
+-4 Sign in page at session views - new.html.erb
 ```ruby
 <h1>Sign in</h1>
 
@@ -56,7 +48,7 @@ NB: Didnt actually do this yet- so here are the two seperate forms, though you c
 </form>
 ```
 
--6 New USER sign up page in User views - new.html.erb
+-5 New USER sign up page in User views - new.html.erb
 ```ruby
 <h1>New User</h1>
 
@@ -86,4 +78,4 @@ NB: Didnt actually do this yet- so here are the two seperate forms, though you c
 </form>
 ```
 
--7 Anatomy of
+-6 Anatomy of Forms to be continued...

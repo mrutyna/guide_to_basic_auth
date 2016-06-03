@@ -75,3 +75,5 @@
 ```
         GIT COMMIT 12- User Controller Complete
 ```
+
+8 -   before_action :require_no_user! - Prevents a user who is already signed in from making another user. 

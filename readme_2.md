@@ -96,3 +96,8 @@
 ```
           GIT COMMIT 9 - "require_no_user is last pair for ApplicationController"
 ```
+
+-12. How to use the defined function. You place
+  ```before_action :require_user!``` on the pages (particularly root controller) where you dont wnat people to access it unless they are logged in.
+
+-13. While you place ``` before_action :require_no_user!, only: [:create, :new]``` on places like the session and user controllers, where there is no point for a user to make a new user, or sign in, if they are already signed in. 

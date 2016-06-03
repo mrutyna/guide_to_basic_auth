@@ -1,10 +1,13 @@
 Basic Authentication Summary
 
-This summary shows the functions you will have to write, just the names, while the linked readme shows the code step by step.
+This summary can be used in two different ways. Just this page will list only the function that you have to write. Therefore allowing you to practice the functions themselves without having to remember the name of the 22 functions.
 
--1. Basic Setup and User Model - [Readme1](https://github.com/mrutyna/guide_to_basic_auth/blob/master/readme_1.md)
+IF you need additional resources, such as how to write the function, or an explanation why certain things are being done, you can hit on the link for the section to see a detailed explanation.
 
-    1. Generate Model for User
+
+-1. [Basic Setup and User Model](https://github.com/mrutyna/guide_to_basic_auth/blob/master/readme_1.md)
+
+    1. Generate Model for User, Require BCRYPT ***
     2. Add database level constraints to migration, as well as indices to session_token and username
     3. Add matching validations in model
         * password_digest with message
@@ -18,7 +21,7 @@ This summary shows the functions you will have to write, just the names, while t
     7. User::find_by_credentials
 
 
--2. ApplicationController - [Readme2](https://github.com/mrutyna/guide_to_basic_auth/blob/master/readme_2.md)
+-2. [ApplicationController](https://github.com/mrutyna/guide_to_basic_auth/blob/master/readme_2.md)
 
   These methods are built as a series of 3 pairs. (all Private)
 
@@ -32,7 +35,7 @@ This summary shows the functions you will have to write, just the names, while t
           * require_user!
           * require_no_user!
 
--3. SessionController - [Readme3](https://github.com/mrutyna/guide_to_basic_auth/blob/master/readme_3.md)
+-3. [SessionController](https://github.com/mrutyna/guide_to_basic_auth/blob/master/readme_3.md)
 
       1. Generate Controller, and add route (resource), only create, new, destroy
           resource :session, only: [:create, :destroy, :new]
@@ -43,7 +46,7 @@ This summary shows the functions you will have to write, just the names, while t
       4. create
           * Find by credentials, either flash error or login_user
 
--4. UserController - [Readme4](https://github.com/mrutyna/guide_to_basic_auth/blob/master/readme_4.md)
+-4. [UserController](https://github.com/mrutyna/guide_to_basic_auth/blob/master/readme_4.md)
 
       1. Generate controller, and add route (resources) only create, and new
           resources :users, only: [:create, :new]
@@ -51,7 +54,9 @@ This summary shows the functions you will have to write, just the names, while t
       3. User#new should be simple
       4. Only create is left. If the user sucessfuly creates a new user, then log them in automatically, failing that, flash the errors they made.
 
--5. Application Layout - [Readme5](https://github.com/mrutyna/guide_to_basic_auth/blob/master/readme_5_application.md)
+-5. [Application Layout](https://github.com/mrutyna/guide_to_basic_auth/blob/master/readme_5_application.md)
 
       1. Have a bar on top that displays the name of the logged in user, and a log out button option
       2. Show nothing otherwise.
+
+-6 [FORMS for signing in and signing out](https://github.com/mrutyna/guide_to_basic_auth/blob/master/readme_6.md)
