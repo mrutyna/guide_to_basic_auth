@@ -65,3 +65,5 @@ If I made any mistakes, or you have any suggestions, feel free to open up an iss
       2. Show nothing otherwise.
 
 -6 [FORMS for signing in and signing out](https://github.com/mrutyna/guide_to_basic_auth/blob/master/readme_6.md)
+
+-7 [General Purpose Super Phone](https://github.com/mrutyna/guide_to_basic_auth/blob/master/readme_7.md)
