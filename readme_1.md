@@ -21,6 +21,10 @@ Marked at UT #1 - to indicate which number in the useful things file can help yo
 ```ruby
         rails new MusicApp -d postgresql
 ```
+
+-1.5. - Per @Sjern suggestion, remember that if you make postgresql your database, that you MUST LAUNCH the companion program. It is running if you see a little elephant in the top right of you toolbar. 
+
+
 -2. Start new Git Project to Keep track.
 ```ruby
           GIT COMMIT 1: Initial Project Start
