@@ -1,6 +1,6 @@
 Basic Authentication Summary
 
-This summary shows the functions you will have to write, just the names, while the linked readme shows the code step by step. 
+This summary shows the functions you will have to write, just the names, while the linked readme shows the code step by step.
 
 -1. Basic Setup and User Model - [Readme1](https://github.com/mrutyna/guide_to_basic_auth/blob/master/readme_1.md)
 
@@ -51,7 +51,7 @@ This summary shows the functions you will have to write, just the names, while t
       3. User#new should be simple
       4. Only create is left. If the user sucessfuly creates a new user, then log them in automatically, failing that, flash the errors they made.
 
--5. Application Layout - [Readme5](https://github.com/mrutyna/guide_to_basic_auth/blob/master/readme_5.md)
+-5. Application Layout - [Readme5](https://github.com/mrutyna/guide_to_basic_auth/blob/master/readme_5_application.md)
 
       1. Have a bar on top that displays the name of the logged in user, and a log out button option
       2. Show nothing otherwise.
