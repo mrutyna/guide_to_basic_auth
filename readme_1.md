@@ -1,12 +1,53 @@
 I will build this MusicApp with authentication step by step, having all the steps here, as well as committing early and often, so that if I have to go back, I can easily see what fragments of the code were relevant. Simultaneous to this, I will also reference the source material.
 
-NB: Code will be annotated with comments corresponding to the steps that helped create it.
+NB: Code will be annotated with comments corresponding to the steps that helped create it. i.e. If you are unclear why a particular method or section of code is where it is, you can reference the comment # that shows which step added that line. And it will usually have the logic as for why that decision was made.
 
-Example - Index added during Step 7 is commented as #7, meaning if you dont know where a line of code came from, just look at the nearby commented number and it will tell you what step wrote it.
+Example: ```attr_reader :password #14``` line was added to the User Model in step 14, so you can reference that for more information. 
 
+The final code will look like this
 ```ruby
-    add_index :users, :session_token, unique: true #7
-    add_index :users, :username, unique: true #7
+ require 'bcrypt'
+
+class User < ActiveRecord::Base
+  attr_reader :password #14
+
+  after_initialize :ensure_session_token #21
+
+  validates :username, :session_token, presence: true, uniqueness: true #11
+  validates :password_digest, presence: { message: "Password can't be blank" } #11, #12
+  validates :password, length: { minimum: 6, allow_nil: true } #14
+
+  def password=(password) #13
+    @password = password #14 setting it during the password_setting to test validation
+    self.password_digest = BCrypt::Password.create(password)
+  end #13
+
+  def is_password?(password) #13
+    BCrypt::Password.new(self.password_digest).is_password?(password)
+  end #13
+
+  def self.find_by_credentials(username, password) #23
+   user = User.find_by_username(username)
+   return nil if user.nil?
+   user.is_password?(password) ? user : nil
+ end
+
+  def self.generate_session_token #17
+    SecureRandom::urlsafe_base64(16)
+  end
+
+  def reset_session_token! #18
+    self.session_token = self.class.generate_session_token
+    self.save!
+    self.session_token
+  end
+
+  private
+
+  def ensure_session_token #19
+    self.session_token ||= self.class.generate_session_token
+  end
+end
 ```
 
 Finally, there will be a correseponding useful_things.md that will have more information-
@@ -163,50 +204,8 @@ NB: you are using self.password_diget because you want to avoid using an instanc
 -24. Git Commit 6- User Model complete for now, added Find by Credentials.
             GIT COMMIT 6: Completed User Model, added find by credentials
 
--25. Save Space Here Perhaps for Entire User File. Bask in your completed User Model.
-```ruby
- require 'bcrypt'
-class User < ActiveRecord::Base
-  attr_reader :password #14
+-25. Save Space Here Perhaps for Entire User File. Bask in your completed User Model. (see above)
 
-  after_initialize :ensure_session_token #21
-
-  validates :username, :session_token, presence: true, uniqueness: true #11
-  validates :password_digest, presence: { message: "Password can't be blank" } #11, #12
-  validates :password, length: { minimum: 6, allow_nil: true } #14
-
-  def password=(password) #13
-    @password = password #14 setting it during the password_setting to test validation
-    self.password_digest = BCrypt::Password.create(password)
-  end #13
-
-  def is_password?(password) #13
-    BCrypt::Password.new(self.password_digest).is_password?(password)
-  end #13
-
-  def self.find_by_credentials(username, password) #23
-   user = User.find_by_username(username)
-   return nil if user.nil?
-   user.is_password?(password) ? user : nil
- end
-
-  def self.generate_session_token #17
-    SecureRandom::urlsafe_base64(16)
-  end
-
-  def reset_session_token! #18
-    self.session_token = self.class.generate_session_token
-    self.save!
-    self.session_token
-  end
-
-  private
-
-  def ensure_session_token #19
-    self.session_token ||= self.class.generate_session_token
-  end
-end
-```
 -26. Final Git Commit in USer MDOel, added Finished Usermodel to read me
         GIT COMMIT 7: "Final User Model Added to readme"
 
