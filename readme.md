@@ -19,6 +19,7 @@ Basic Authentication Summary
 -2. ApplicationController - [Readme2](https://github.com/mrutyna/guide_to_basic_auth/blob/master/readme_2.md)
 
   These methods are built as a series of 3 pairs. (all Private)
+  
       1. The two helper_methods
           * current_user (found via session_token)
           * logged_in?
