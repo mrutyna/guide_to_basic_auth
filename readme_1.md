@@ -1,8 +1,5 @@
 I will build this MusicApp with authentication step by step, having all the steps here, as well as committing early and often, so that if I have to go back, I can easily see what fragments of the code were relevant. Simultaneous to this, I will also reference the source material.
 
-ALSO Regarding authentication- or AUTH,
-unlike the HW or videos. there will be no bad code, or 'naive' way of doing things first. There will be only the correct way
-
 NB: Code will be annotated with comments corresponding to the steps that helped create it.
 
 Example - Index added during Step 7 is commented as #7, meaning if you dont know where a line of code came from, just look at the nearby commented number and it will tell you what step wrote it.
@@ -22,7 +19,7 @@ Marked at UT #1 - to indicate which number in the useful things file can help yo
         rails new MusicApp -d postgresql
 ```
 
--1.5. - Per @Sjern suggestion, remember that if you make postgresql your database, that you MUST LAUNCH the companion program. It is running if you see a little elephant in the top right of you toolbar. 
+-1.5. - Per @Sjern suggestion, remember that if you make postgresql your database, that you MUST LAUNCH the companion program. It is running if you see a little elephant in the top right of you toolbar.
 
 
 -2. Start new Git Project to Keep track.

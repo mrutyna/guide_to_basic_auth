@@ -4,6 +4,11 @@ This summary can be used in two different ways. Just this page will list only th
 
 IF you need additional resources, such as how to write the function, or an explanation why certain things are being done, you can hit on the link for the section to see a detailed explanation.
 
+My goal in writing this, was that I didn't like how the HW, readings, and video showed you a hodgepoge way of building authentication: showing you a 'naive' implementation, and making you jump in and out of dozen of different files over the course of one reading.
+
+My philosophy in this was to combine only the "right way" with no references to piecemeal implementation of bad code. I believe you can write one entire file step by step and complete it before moving on to the next one.
+
+If I made any mistakes, or you have any suggestions, feel free to open up an issue, and I will try to respond to it.
 
 -1. [Basic Setup and User Model](https://github.com/mrutyna/guide_to_basic_auth/blob/master/readme_1.md)
 
