@@ -1,5 +1,7 @@
 Basic Authentication Summary
 
+This summary shows the functions you will have to write, just the names, while the linked readme shows the code step by step. 
+
 -1. Basic Setup and User Model - [Readme1](https://github.com/mrutyna/guide_to_basic_auth/blob/master/readme_1.md)
 
     1. Generate Model for User
@@ -19,7 +21,7 @@ Basic Authentication Summary
 -2. ApplicationController - [Readme2](https://github.com/mrutyna/guide_to_basic_auth/blob/master/readme_2.md)
 
   These methods are built as a series of 3 pairs. (all Private)
-  
+
       1. The two helper_methods
           * current_user (found via session_token)
           * logged_in?
